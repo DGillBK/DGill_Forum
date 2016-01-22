@@ -1,0 +1,168 @@
+@import url(https://fonts.googleapis.com/css?family=Catamaran:400,900,500,100);
+
+/* Clearfix */
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: Catamaran;
+  text-align: center;
+  color: #ffffff;
+  background-size: cover;
+}
+
+/* copied from other file */
+
+a.logo { display: block;
+  background: url("../images/logo.png") no-repeat;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-top: 12px;
+}
+
+.header {
+  padding: 10px 30px 10px 25px;
+  border-bottom: 1px solid #fff;
+  background: #feff57;
+  height: 285px;
+  background: url("../images/travel_header.jpg");
+  background-size: cover;
+  background-position: 50% 50%;
+
+}
+
+.main_content {
+  padding: 30px;
+}
+
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 19px;
+}
+
+
+nav {
+  padding: 15px;
+  background-color: #D8AE48;
+  border-radius: 40px 0 40px 0;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 10px;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+.main-greeting {
+  font-size: 24px;
+  padding: 10px 0;
+  background-color: #EDEDEB;
+  border-bottom: 1px solid #8F9A95;
+  color: #454F51;
+  font-weight: 900;  
+}
+
+
+.topic-wrapper {
+  padding: 50px;
+}
+
+.topic-tile {
+  float: left;
+  max-width: 25%;
+  max-height: 30%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.topic-tile a {
+  color: #000;
+  font-weight: 500;
+}
+
+.topic-container {
+  background-color: #728E9D;
+}
+
+.one-topic a {
+  font-weight: 900;
+  color: #728E9D;
+  font-size: 45px;
+}
+
+.no-posts {
+  color: #728E9D;
+  font-size: 17px; 
+}
+
+/* Contact Form */
+
+
+form.contact {
+  width: 600px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+form.contact div.input-row {
+  padding: 6px;
+}
+
+form.contact div.input-row label {
+  vertical-align: top;
+  font-size: 16px;
+  display: inline-block;;
+  width: 200px;
+}
+
+form.contact div.input-row input[type=text] {
+  font-size: 16px;
+  width: 440px;
+  height: 30px;
+  padding: 6px;
+  color: #000;
+  border: 1px solid #fff;
+}
+
+form.contact div.input-row input[type=submit] {
+  font-size: 18px;
+  color: #fff;
+  background-color: #173444;
+  border: 1px solid #173444;
+  padding: 6px 20px;
+  cursor: pointer;
+}
+
+/* List Items */
+
+.main_navigation {
+  float: right;
+  font-weight: 800;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  padding: 3px 12px;
+  vertical-align: top;
+  border: 5px solid #fff;
+}
+
+.main_navigation:hover {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}

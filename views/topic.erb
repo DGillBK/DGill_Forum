@@ -1,0 +1,81 @@
+<% if @topic.first.length %>
+
+	<div class="one-topic">
+		<a>YOU'RE IN <%= "#{@topic.first["title"].upcase}" %></a>
+	</div>
+
+	<div>
+		<img class="one-topic-pic" src=<%= "#{@topic.first["image_url"]}" %>>
+	</div>
+
+	<% if @posts.length > 0 %>
+		<% @posts.each do |post| %>
+			<div>
+				<a href="/post/<%= "#{post["id"]}" %>"><%= "#{post["title"]}" %></a>
+			</div>
+			
+<!-- __________________________________________________ -->
+
+			<div class="vote">
+				<div>
+					VOTES: <%= "#{post['vote']}"%>
+				</div>
+				<!-- form to vote for a post
+				 posts to post route BUT uses the PUT _method -->
+				<div class="vote-form">
+					<form action="/post" method="post">
+						<!--  this field is required by sinatra to UPDATE the db-->
+						<input type="hidden" name="_method" value="put" />
+						<input type="hidden" name="topic_id" value=<%= "#{@topic.first["id"]}" %>>
+						<input type="hidden" name="post_id" value=<%= "#{post["id"]}" %>>
+						
+						<div class="like">
+							<input type="submit" value="LIKE" />
+						</div>
+					</form>
+				</div>
+			</div>
+
+<!-- __________________________________________________ -->
+
+		<% end %>
+	<% else %>	
+		<div class="no-posts">(no activities yet)</div>
+	<% end %>
+
+<% end %>
+
+
+<div class="main-greeting"><%= @intro %></div>
+
+
+<div class="topic-container">
+		<form class="contact" action="/post" method="post">
+			<input type="hidden" name="topic_id" value=<%= "#{@topic.first["id"]}" %>>
+			<div class="input-row">
+				<label for="title">ACTIVITY: </label>
+				<input type="text" name="title" />
+			</div>
+			
+			<div class="input-row">
+				<label for="description">DESCRIPTION: </label>
+				<input type="text" name="description" />
+			</div>
+			
+			<div class="input-row">
+				<label for="image_url">IMAGE LINK: </label>
+				<input type="text" name="image_url" />
+			</div>
+
+			<div class="input-row">
+				<label for="author">AUTHOR: </label>
+				<input type="text" name="author" />
+			</div>
+			
+			<div class="input-row">
+				<input type="submit" value="LET'S GO!" />
+			</div>
+		</form>
+</div>
+	
+

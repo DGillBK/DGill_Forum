@@ -1,0 +1,57 @@
+<div class="main-greeting"><%= @intro %></div>
+
+<div class="topic-container">
+	<form class="contact" action="/topic" method="post">
+		
+		<div class="input-row">
+			<label for="title">WHICH COUNTRY? </label>
+			<input type="text" name="title" />
+		</div>
+		
+		<div class="input-row">
+			<label for="image_url">IMAGE LINK: </label>
+			<input type="text" name="image_url" />
+		</div>
+
+		<div class="input-row">
+			<label for="author">AUTHOR: </label>
+			<input type="text" name="author" />
+		</div>
+		
+		<div class="input-row">
+			<input type="submit" value="LET'S GO!" />
+		</div>
+
+	</form>
+</div>
+
+<div class="topic-wrapper clearfix">	
+	<% @topics.each do |topic| %>
+			<div class="topic-tile">
+				<a href="/topic/<%= "#{topic["id"]}" %>"><%= "#{topic["title"]}" %></a>
+				<a href="/topic/<%= "#{topic["id"]}" %>"><img src=<%= "#{topic["image_url"]}" %>></a>
+			</div>
+<!-- __________________________________________________ -->
+
+			<div class="vote">
+				<div>
+					VOTES: <%= "#{topic['vote']}"%>
+				</div>
+				<!-- form to vote for a topic
+				 posts to topic route BUT uses the PUT _method -->
+				<div class="vote-form">
+					<form action="/topic" method="post">
+						<!--  this field is required by sinatra to UPDATE the db-->
+						<input type="hidden" name="_method" value="put" />
+						<input type="hidden" name="topic_id" value=<%= "#{topic["id"]}" %>>
+						
+						<div class="like">
+							<input type="submit" value="LIKE" />
+						</div>
+					</form>
+				</div>
+			</div>
+<!-- __________________________________________________ -->
+
+	<% end %>
+</div>
