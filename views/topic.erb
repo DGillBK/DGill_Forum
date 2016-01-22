@@ -1,52 +1,4 @@
-<% if @topic.first.length %>
-
-	<div class="one-topic">
-		<a>YOU'RE IN <%= "#{@topic.first["title"].upcase}" %></a>
-	</div>
-
-	<div>
-		<img class="one-topic-pic" src=<%= "#{@topic.first["image_url"]}" %>>
-	</div>
-
-	<% if @posts.length > 0 %>
-		<% @posts.each do |post| %>
-			<div>
-				<a href="/post/<%= "#{post["id"]}" %>"><%= "#{post["title"]}" %></a>
-			</div>
-			
-<!-- __________________________________________________ -->
-
-			<div class="vote">
-				<div>
-					VOTES: <%= "#{post['vote']}"%>
-				</div>
-				<!-- form to vote for a post
-				 posts to post route BUT uses the PUT _method -->
-				<div class="vote-form">
-					<form action="/post" method="post">
-						<!--  this field is required by sinatra to UPDATE the db-->
-						<input type="hidden" name="_method" value="put" />
-						<input type="hidden" name="topic_id" value=<%= "#{@topic.first["id"]}" %>>
-						<input type="hidden" name="post_id" value=<%= "#{post["id"]}" %>>
-						
-						<div class="like">
-							<input type="submit" value="LIKE" />
-						</div>
-					</form>
-				</div>
-			</div>
-
-<!-- __________________________________________________ -->
-
-		<% end %>
-	<% else %>	
-		<div class="no-posts">(no activities yet)</div>
-	<% end %>
-
-<% end %>
-
-
-<div class="main-greeting"><%= @intro %></div>
+<div class="main-greeting">YOU'RE IN <%= "#{@topic.first["title"].upcase}" %>, <%= @intro %></div>
 
 
 <div class="topic-container">
@@ -77,5 +29,46 @@
 			</div>
 		</form>
 </div>
-	
+
+<div class="topic-wrapper clearfix">
+
+	<% if @topic.first.length %>
+
+		<% if @posts.length > 0 %>
+			<% @posts.each do |post| %>
+				<div class="topic-tile">
+					<div>
+						<a href="/post/<%= "#{post["id"]}" %>"><%= "#{post["title"]}" %></a>
+						<a href="/post/<%= "#{post["id"]}" %>"><img src=<%= "#{post["image_url"]}" %>></a>
+					
+					</div>
+					
+
+					<div class="vote">
+
+						<div>
+							<form action="/post" method="post">
+
+								<input type="hidden" name="_method" value="put" />
+								<input type="hidden" name="topic_id" value=<%= "#{@topic.first["id"]}" %>>
+								<input type="hidden" name="post_id" value=<%= "#{post["id"]}" %>>
+								
+								<div class="like">
+									<input type="submit" value="LIKE" />
+								</div>
+							</form>
+						</div>
+						<div>
+							LIKES: <%= "#{post['vote']}"%>
+						</div>				
+					</div>
+					</div>
+
+			<% end %>
+		<% else %>	
+			<div class="no-posts">(no activities yet)</div>
+		<% end %>
+	</div>
+	<% end %>
+</div>
 

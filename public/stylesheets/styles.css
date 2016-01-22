@@ -80,20 +80,23 @@ h2 {
 
 
 .topic-wrapper {
-  padding: 50px;
+  padding: 20px 50px;
 }
 
 .topic-tile {
   float: left;
   max-width: 25%;
-  max-height: 30%;
   padding: 20px;
   overflow: hidden;
 }
 
 .topic-tile a {
-  color: #000;
+  color: #173444;
   font-weight: 500;
+}
+
+.topic-tile img {
+  max-height: 200px;
 }
 
 .topic-container {
@@ -165,4 +168,29 @@ form.contact div.input-row input[type=submit] {
 .main_navigation:hover {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
+}
+
+/* Voting */
+
+.vote {
+  color: #000;
+  margin: 10px 0 0 20px;
+}
+
+.vote form {
+  margin: 0;
+}
+
+.vote div {
+  font-size: 13px;
+}
+
+.like input {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #728E9D;
+  border: 1px solid #728E9D;
+  padding: 6px 20px;
+  cursor: pointer;
 }

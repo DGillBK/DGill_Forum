@@ -6,7 +6,7 @@ module Travel
       # text displayed at the top of the page
       @intro = "WHERE SHOULD WE GO?"
       # fetch all the topics
-      @topics = db.exec("SELECT * FROM topic").to_a      
+      @topics = db.exec("SELECT topic.*, count(post.*) as post_count FROM topic, post WHERE post.topic_id = topic.id GROUP BY topic.id, post.topic_id ORDER BY vote DESC").to_a
       erb :topics
     end
 
@@ -48,7 +48,7 @@ module Travel
       # get the info about this topic
       @topic = db.exec("SELECT * FROM topic WHERE id = #{id}")
       # get all the posts for this topic
-      @posts = db.exec("SELECT * FROM post WHERE topic_id = #{id}").to_a
+      @posts = db.exec("SELECT * FROM post WHERE topic_id = #{id} ORDER BY vote DESC").to_a
       erb :topic
     end
 

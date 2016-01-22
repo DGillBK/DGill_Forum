@@ -1,47 +1,49 @@
 <div class="one-topic">
-	<a>ANY THOUGHTS ON <%= "#{@post.first["title"].upcase}" %>?</a>
+	<a><%= "#{@post.first["title"].upcase}" %>, THOUGHTS?</a>
 </div>
 <div>
 	<img class="one-post-pic" src=<%= "#{@post.first["image_url"]}" %>>
 </div>	
 
-<% if @comments.length > 0 %>
-	<% @comments.each do |comment| %>
-		<div>
-			<%= "#{comment["description"]}" %>
-		</div>
-		<div>
-			-<%="#{comment["author"]}" %>
-		</div>
-		<div>
-			LIKES: <%= "#{comment['vote']}"%>
-		</div>
+<div class="comments">
 
-<!-- __________________________________________________ -->
-
-			<div class="vote">
-				<!-- form to vote for a comment
-					posts to comment route BUT uses the PUT _method -->
-				<form class="vote" action="/comment" method="post">
-					<!--  this field is required by sinatra to UPDATE the db-->
-					<input type="hidden" name="_method" value="put" />
-					<input type="hidden" name="post_id" value=<%= "#{@post.first["id"]}" %>>
-					<input type="hidden" name="comment_id" value=<%= "#{comment["id"]}" %>>
-					
-					<div class="input-row">
-						<input type="submit" value="LIKE THIS COMMENT" />
-					</div>
-				</form>
+	<% if @comments.length > 0 %>
+		<% @comments.each do |comment| %>
+			<div>
+				<%= "#{comment["description"]}" %>
+			</div>
+			<div>
+				-<%="#{comment["author"]}" %>
+			</div>
+			<div>
+				LIKES: <%= "#{comment['vote']}"%>
 			</div>
 
-<!-- __________________________________________________ -->
 
 
+				<div class="vote">
+
+					<form action="/comment" method="post">
+
+						<input type="hidden" name="_method" value="put" />
+						<input type="hidden" name="post_id" value=<%= "#{@post.first["id"]}" %>>
+						<input type="hidden" name="comment_id" value=<%= "#{comment["id"]}" %>>
+						
+						<div class="like">
+							<input type="submit" value="LIKE" />
+						</div>
+					</form>
+					<div>
+						LIKES: <%= "#{comment['vote']}"%>
+					</div>	
+				</div>
+
+
+		<% end %>
+	<% else %>	
+		<div class="no-posts">(no comments yet)</div>
 	<% end %>
-<% else %>	
-	<div class="no-posts">(no comments yet)</div>
-<% end %>
-
+</div>
 
 <div class="main-greeting"><%= @intro %></div>
 

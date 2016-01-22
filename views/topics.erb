@@ -27,21 +27,15 @@
 
 <div class="topic-wrapper clearfix">	
 	<% @topics.each do |topic| %>
-			<div class="topic-tile">
-				<a href="/topic/<%= "#{topic["id"]}" %>"><%= "#{topic["title"]}" %></a>
-				<a href="/topic/<%= "#{topic["id"]}" %>"><img src=<%= "#{topic["image_url"]}" %>></a>
-			</div>
-<!-- __________________________________________________ -->
+		<div class="topic-tile">
+			<a href="/topic/<%= "#{topic["id"]}" %>"><%= "#{topic["title"]}" %></a>
+			<a href="/topic/<%= "#{topic["id"]}" %>"><img src=<%= "#{topic["image_url"]}" %>></a>
 
 			<div class="vote">
+
 				<div>
-					VOTES: <%= "#{topic['vote']}"%>
-				</div>
-				<!-- form to vote for a topic
-				 posts to topic route BUT uses the PUT _method -->
-				<div class="vote-form">
 					<form action="/topic" method="post">
-						<!--  this field is required by sinatra to UPDATE the db-->
+
 						<input type="hidden" name="_method" value="put" />
 						<input type="hidden" name="topic_id" value=<%= "#{topic["id"]}" %>>
 						
@@ -50,8 +44,15 @@
 						</div>
 					</form>
 				</div>
+				<div>
+					LIKES: <%= "#{topic['vote']}"%>
+				</div>		
+				<div>
+					POSTS: <%= "#{topic['post_count']}"%>
+				</div>		
 			</div>
-<!-- __________________________________________________ -->
 
+		
+		</div>
 	<% end %>
 </div>
