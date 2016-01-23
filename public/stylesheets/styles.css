@@ -123,25 +123,25 @@ h2 {
 /* Contact Form */
 
 
-form.contact {
+.contact {
   width: 600px;
   padding: 20px;
   margin: 0 auto;
 }
 
-form.contact div.input-row {
+.contact div.input-row {
   padding: 6px;
 }
 
-form.contact div.input-row label {
+.contact div.input-row label {
   vertical-align: top;
   font-size: 16px;
   display: inline-block;;
   width: 200px;
 }
 
-form.contact div.input-row input[type=text],
-form.contact div.input-row textarea {
+.contact div.input-row input,
+.contact div.input-row textarea {
   font-size: 16px;
   width: 440px;
   height: 30px;
@@ -150,16 +150,20 @@ form.contact div.input-row textarea {
   border: 1px solid #fff;
 }
 
-form.contact div.input-row textarea {
+
+
+.contact div.input-row textarea {
   height: 90px;
 }
 
-form.contact div.input-row input[type=submit] {
+.contact div.input-row input[type=submit] {
   font-size: 18px;
   color: #fff;
   background-color: #173444;
   border: 1px solid #173444;
   padding: 6px 20px;
+  width: auto;
+  height: auto;
   cursor: pointer;
 }
 
@@ -180,6 +184,51 @@ form.contact div.input-row input[type=submit] {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
 }
+
+/* more */
+
+
+.main_navigation>li {
+  padding: 12px 12px 0 12px;
+}
+
+.main_navigation li {
+  display: inline-block;
+  font-size: 20px;
+  position: relative;
+}
+
+.main_navigation a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 3px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.main_navigation a:hover {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.main_navigation li ul.sub_main_navigation {
+  position: absolute;
+  top: 61px;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.main_navigation li:hover ul.sub_main_navigation {
+  display: block;
+  padding: 0;
+}
+
+.main_navigation li ul.sub_main_navigation a {
+  min-width: 99px;
+  color: #fff;
+  padding: 11px 20px;
+}
+
 
 /* Voting */
 

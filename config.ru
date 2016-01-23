@@ -3,6 +3,7 @@ require 'pry'
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'pg'
+require 'rspec'
 require 'redcarpet'
 require 'bcrypt'
 

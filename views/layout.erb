@@ -11,8 +11,19 @@
 
     <div class="header clearfix">
       <a href="/" class="logo"></a>
-      <a class="main_navigation" href="/">TOPICS</a>
+       <ul class="main_navigation">
+        <li>
+          <a href="/">TOPICS</a>
+          <ul class="sub_main_navigation">
+            <% top_topics.each do |topic| %>
+              <li><a href="/topic/<%= topic['id']%>"><%= topic['title']%></a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul> 
     </div>
+
+
 
     <%= yield %>
   

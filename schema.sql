@@ -1,23 +1,25 @@
--- DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS topic;
-DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS comment;
+DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS topic;
+DROP TABLE IF EXISTS users;
 
 
--- CREATE TABLE user (
---   id SERIAL PRIMARY KEY,
---   name VARCHAR UNIQUE NOT NULL,  
---   email VARCHAR UNIQUE NOT NULL,
---   password_digest VARCHAR NOT NULL
--- );
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,  
+  email VARCHAR UNIQUE NOT NULL,
+  password_digest VARCHAR NOT NULL
+);
+
 
 CREATE TABLE topic (
   id SERIAL PRIMARY KEY,
   title VARCHAR NOT NULL,  
   image_url VARCHAR NOT NULL,
   vote INTEGER DEFAULT 0,
-  author VARCHAR NOT NULL
-  -- user_id INTEGER REFERENCES user(id)
+  author VARCHAR NOT NULL,
+  user_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE post (
@@ -27,7 +29,7 @@ CREATE TABLE post (
   image_url VARCHAR NOT NULL,
   vote INTEGER DEFAULT 0,
   author VARCHAR NOT NULL,
-  -- user_id INTEGER REFERENCES user(id),
+  user_id INTEGER REFERENCES users(id),
   topic_id INTEGER REFERENCES topic(id)
 );
 
@@ -36,7 +38,7 @@ CREATE TABLE comment (
   description VARCHAR NOT NULL,
   vote INTEGER DEFAULT 0,
   author VARCHAR NOT NULL,
-  -- user_id INTEGER REFERENCES user(id),
+  user_id INTEGER REFERENCES users(id),
   post_id INTEGER REFERENCES post(id)
 );
 
