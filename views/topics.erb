@@ -1,29 +1,38 @@
 <div class="main-greeting"><%= @intro %></div>
 
+
 <div class="form-container">
-	<form class="contact" action="/topic" method="post">
-		
-		<div class="input-row">
-			<label for="title">WHICH COUNTRY? </label>
-			<input type="text" name="title" />
-		</div>
-		
-		<div class="input-row">
-			<label for="image_url">IMAGE LINK: </label>
-			<input type="text" name="image_url" />
-		</div>
 
-		<div class="input-row">
-			<label for="author">AUTHOR: </label>
-			<input type="text" name="author" />
-		</div>
-		
-		<div class="input-row">
-			<input type="submit" value="LET'S GO!" />
-		</div>
+	<% if current_user %>
 
-	</form>
+			<form class="contact" action="/topic" method="post">
+				
+				<div class="input-row">
+					<label for="title">WHICH COUNTRY? </label>
+					<input type="text" name="title" />
+				</div>
+				
+				<div class="input-row">
+					<label for="image_url">IMAGE LINK: </label>
+					<input type="text" name="image_url" />
+				</div>
+
+				<div class="input-row">
+					<label for="author">AUTHOR: </label>
+					<input type="text" name="author" />
+				</div>
+				
+				<div class="input-row">
+					<input type="submit" value="LET'S GO!" />
+				</div>
+
+			</form>
+	<% else %>
+		<a href="/login">Login</a> <a href="/signup">Register</a> to post
+	<% end %>
+	
 </div>
+
 
 <div class="topic-wrapper clearfix">	
 	<% @topics.each do |topic| %>

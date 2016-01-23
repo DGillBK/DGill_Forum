@@ -1,7 +1,6 @@
 module Travel
   class Server < Sinatra::Base
 
-
     enable :sessions
 
     @@db = PG.connect({dbname: "trav_forum"})
@@ -13,7 +12,7 @@ module Travel
         SQL
       else
         # THE USER IS NOT LOGGED IN
-        @user = { "name" => 'NOT!'}
+        # @user = { "name" => 'NOT!'}
       end
     end
 
@@ -37,7 +36,7 @@ module Travel
 
       session["user-id"]=new_user.first["id"].to_i
 
-      erb :signup_success
+      redirect "/"
     end
 
     get "/login" do
