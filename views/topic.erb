@@ -1,7 +1,7 @@
 <div class="main-greeting">YOU'RE IN <%= "#{@topic.first["title"].upcase}" %>, <%= @intro %></div>
 
 
-<div class="topic-container">
+<div class="form-container">
 		<form class="contact" action="/post" method="post">
 			<input type="hidden" name="topic_id" value=<%= "#{@topic.first["id"]}" %>>
 			<div class="input-row">
@@ -60,7 +60,10 @@
 						</div>
 						<div>
 							LIKES: <%= "#{post['vote']}"%>
-						</div>				
+						</div>
+						<div>
+							COMMENTS: <%= "#{post['']}"%>
+						</div>
 					</div>
 					</div>
 

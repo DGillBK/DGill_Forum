@@ -9,7 +9,6 @@ DROP TABLE IF EXISTS comment;
 --   name VARCHAR UNIQUE NOT NULL,  
 --   email VARCHAR UNIQUE NOT NULL,
 --   password_digest VARCHAR NOT NULL
---   profile_pic VARCHAR
 -- );
 
 CREATE TABLE topic (

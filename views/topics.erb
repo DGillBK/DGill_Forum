@@ -1,6 +1,6 @@
 <div class="main-greeting"><%= @intro %></div>
 
-<div class="topic-container">
+<div class="form-container">
 	<form class="contact" action="/topic" method="post">
 		
 		<div class="input-row">
@@ -48,7 +48,7 @@
 					LIKES: <%= "#{topic['vote']}"%>
 				</div>		
 				<div>
-					POSTS: <%= "#{topic['post_count']}"%>
+					POSTS: <%= "#{topic['count']}"%>
 				</div>		
 			</div>
 

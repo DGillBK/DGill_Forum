@@ -84,10 +84,13 @@ h2 {
 }
 
 .topic-tile {
-  float: left;
-  max-width: 25%;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 23%;
   padding: 20px;
   overflow: hidden;
+  border: 1px solid red;
+  /*height: 250px;*/
 }
 
 .topic-tile a {
@@ -96,10 +99,13 @@ h2 {
 }
 
 .topic-tile img {
-  max-height: 200px;
+
+  /*max-height: 200px;*/
+  height: auto;
+  width: 100%;
 }
 
-.topic-container {
+.form-container {
   background-color: #728E9D;
 }
 
@@ -134,13 +140,18 @@ form.contact div.input-row label {
   width: 200px;
 }
 
-form.contact div.input-row input[type=text] {
+form.contact div.input-row input[type=text],
+form.contact div.input-row textarea {
   font-size: 16px;
   width: 440px;
   height: 30px;
   padding: 6px;
   color: #000;
   border: 1px solid #fff;
+}
+
+form.contact div.input-row textarea {
+  height: 90px;
 }
 
 form.contact div.input-row input[type=submit] {
@@ -174,7 +185,7 @@ form.contact div.input-row input[type=submit] {
 
 .vote {
   color: #000;
-  margin: 10px 0 0 20px;
+  margin: 10px 0 0 0;
 }
 
 .vote form {
@@ -193,4 +204,10 @@ form.contact div.input-row input[type=submit] {
   border: 1px solid #728E9D;
   padding: 6px 20px;
   cursor: pointer;
+}
+
+/* Comments */
+
+.comments {
+  color: #000;
 }

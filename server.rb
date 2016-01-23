@@ -6,7 +6,14 @@ module Travel
       # text displayed at the top of the page
       @intro = "WHERE SHOULD WE GO?"
       # fetch all the topics
-      @topics = db.exec("SELECT topic.*, count(post.*) as post_count FROM topic, post WHERE post.topic_id = topic.id GROUP BY topic.id, post.topic_id ORDER BY vote DESC").to_a
+      @topics = db.exec("SELECT * FROM topic ORDER BY vote DESC").to_a
+      
+      # iterates through each topic, finds the count of posts it has from the post table, adds that to the topic hash. 
+      @topics.each do |topic|
+        count = db.exec("SELECT * FROM post where topic_id = #{topic['id']}").to_a.length
+        topic['count'] = count
+      end
+
       erb :topics
     end
 
@@ -23,7 +30,7 @@ module Travel
       # redirect to the new topic we just inserted
       redirect '/topic/' + @topic.first['id']
     end
-# _________________topic vote_______________________
+
 
     put '/topic' do
       db = database_connection
@@ -37,7 +44,7 @@ module Travel
       # redirect back to the post 
       redirect '/'
     end
-# ___________________________________________________
+
 
     get '/topic/:id' do #get one topic and all posts
       db = database_connection
@@ -61,6 +68,14 @@ module Travel
       @post = db.exec("SELECT * FROM post WHERE id = #{params["id"]}")
       # get all the comments for this post
       @comments = db.exec("SELECT * FROM comment WHERE post_id = #{params["id"]} ORDER BY vote DESC").to_a
+
+      # turn on mark down thing - think
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+
+      # change the comment from mark to html
+      @comments.each do |comment|
+        comment['description'] = markdown.render(comment['description'])
+      end
       erb :post
     end
 

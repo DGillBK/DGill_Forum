@@ -1,25 +1,42 @@
-<div class="one-topic">
-	<a><%= "#{@post.first["title"].upcase}" %>, THOUGHTS?</a>
+<div class="main-greeting"><%= "#{@post.first["title"].upcase}" %>, THOUGHTS?</div>
+
+
+<div class="form-container">
+		<form class="contact" action="/comment" method="post">
+			<input type="hidden" name="post_id" value=<%= "#{@post.first["id"]}" %>>
+			
+			<div class="input-row">
+				<label for="description">COMMENT: </label>
+				<textarea name="description" id="description" cols="30" rows="10"></textarea>
+			</div>
+
+			<div class="input-row">
+				<label for="author">AUTHOR: </label>
+				<input type="text" name="author" id="author" />
+			</div>
+			
+			<div class="input-row">
+				<input type="submit" value="LET'S GO!" />
+			</div>
+		</form>
 </div>
-<div>
+
+<!-- <div>
 	<img class="one-post-pic" src=<%= "#{@post.first["image_url"]}" %>>
-</div>	
+</div> -->	
 
 <div class="comments">
 
 	<% if @comments.length > 0 %>
 		<% @comments.each do |comment| %>
-			<div>
-				<%= "#{comment["description"]}" %>
-			</div>
+
 			<div>
 				-<%="#{comment["author"]}" %>
 			</div>
+
 			<div>
-				LIKES: <%= "#{comment['vote']}"%>
+				<%= "#{comment["description"]}" %>
 			</div>
-
-
 
 				<div class="vote">
 
@@ -44,29 +61,3 @@
 		<div class="no-posts">(no comments yet)</div>
 	<% end %>
 </div>
-
-<div class="main-greeting"><%= @intro %></div>
-
-
-<div class="topic-container">
-		<form class="contact" action="/comment" method="post">
-			<input type="hidden" name="post_id" value=<%= "#{@post.first["id"]}" %>>
-			
-			<div class="input-row">
-				<label for="description">COMMENT: </label>
-				<input type="text" name="description" />
-			</div>
-
-			<div class="input-row">
-				<label for="author">AUTHOR: </label>
-				<input type="text" name="author" />
-			</div>
-			
-			<div class="input-row">
-				<input type="submit" value="LET'S GO!" />
-			</div>
-		</form>
-</div>
-
-	
-
