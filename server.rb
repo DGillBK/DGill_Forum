@@ -82,7 +82,7 @@ module Travel
       # store all the params posted as variables
       title = params["title"]
       image_url = params["image_url"]
-      author = params["author"]
+      author = current_user["name"]
       user_id = current_user["id"]
 
       # Insert the parameters into the data base and save the new values in @topic variable for later use
@@ -143,7 +143,7 @@ module Travel
       title = params["title"]
       description = params["description"]
       image_url = params["image_url"]
-      author = params["author"]
+      author = current_user["name"]
       user_id = current_user["id"]
 
       # insert new post and save the info in @post variable for later use
@@ -168,12 +168,9 @@ module Travel
     post '/comment' do
       # store paramas as variables for easy use
       post_id = params['post_id']
-      author = params['author']
+      author = current_user["name"]
       description = params['description']
       user_id = current_user['id']
-
-      # text at top of the page
-      @intro = "WHAT CHU SAY?!"
 
       # insert new comment into the db
       @@db.exec_params("INSERT INTO comment ( post_id, author, description, user_id ) VALUES ( $1, $2, $3, $4)",[post_id, author, description, user_id])
