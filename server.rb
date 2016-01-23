@@ -7,9 +7,8 @@ module Travel
 
     def current_user
       if session["user_id"]
-        @user ||= @@db.exec_params(<<-SQL, [session["user_id"]]).first
-          SELECT * FROM users WHERE id = $1
-        SQL
+
+        @user = @@db.exec_params("SELECT * FROM users WHERE id = $1", [session['user_id']]).first
       else
         # THE USER IS NOT LOGGED IN
         # @user = { "name" => 'NOT!'}
@@ -84,9 +83,10 @@ module Travel
       title = params["title"]
       image_url = params["image_url"]
       author = params["author"]
+      user_id = current_user["id"]
 
       # Insert the parameters into the data base and save the new values in @topic variable for later use
-      @topic = @@db.exec_params("INSERT INTO topic (title, image_url, author) VALUES ($1, $2, $3) RETURNING id",[ title, image_url, author ])
+      @topic = @@db.exec_params("INSERT INTO topic (title, image_url, author, user_id) VALUES ($1, $2, $3, $4) RETURNING id",[ title, image_url, author, user_id ])
 
       # redirect to the new topic we just inserted
       redirect '/topic/' + @topic.first['id']
@@ -144,9 +144,10 @@ module Travel
       description = params["description"]
       image_url = params["image_url"]
       author = params["author"]
+      user_id = current_user["id"]
 
       # insert new post and save the info in @post variable for later use
-      @post = @@db.exec_params("INSERT INTO post (topic_id, title, description, image_url, author) VALUES ($1, $2, $3, $4, $5) RETURNING id",[ topic_id, title, description, image_url, author ])
+      @post = @@db.exec_params("INSERT INTO post (topic_id, title, description, image_url, author, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",[ topic_id, title, description, image_url, author, user_id ])
 
       # use post variable to redirect to the post we just inserted
       redirect '/post/' + @post.first['id']
@@ -169,12 +170,13 @@ module Travel
       post_id = params['post_id']
       author = params['author']
       description = params['description']
+      user_id = current_user['id']
 
       # text at top of the page
       @intro = "WHAT CHU SAY?!"
 
       # insert new comment into the db
-      @@db.exec_params("INSERT INTO comment ( post_id, author, description ) VALUES ( $1, $2, $3)",[post_id, author, description])
+      @@db.exec_params("INSERT INTO comment ( post_id, author, description, user_id ) VALUES ( $1, $2, $3, $4)",[post_id, author, description, user_id])
 
       # redirect back to the post this comment is for
       redirect '/post/' + post_id
