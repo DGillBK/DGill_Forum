@@ -114,6 +114,12 @@ module Travel
       @topic = @@db.exec("SELECT * FROM topic WHERE id = #{id}")
       # get all the posts for this topic
       @posts = @@db.exec("SELECT * FROM post WHERE topic_id = #{id} ORDER BY vote DESC").to_a
+
+      # iterates through each topic, finds the count of posts it has from the post table, adds that to the topic hash. 
+      @posts.each do |post|
+        count = @@db.exec("SELECT * FROM comment where post_id = #{post['id']}").to_a.length
+        post['count'] = count
+      end
       erb :topic
     end
 
@@ -133,6 +139,7 @@ module Travel
       @comments.each do |comment|
         comment['description'] = markdown.render(comment['description'])
       end
+      
       erb :post
     end
 

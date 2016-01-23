@@ -1,4 +1,7 @@
-<div class="main-greeting"><%= "#{@post.first["title"].upcase}" %>, THOUGHTS?</div>
+<div class="main-greeting">
+	<div><%= "#{@post.first["title"].upcase}" %></div>
+	<div>"<%= "#{@post.first["description"]}" %>" -<%= "#{@post.first["author"]}" %></div>
+</div>
 
 <div class="form-container">
 
@@ -25,7 +28,7 @@
 	<% else %>
 		<a href="/login">Login</a> <a href="/signup">Register</a> to post
 	<% end %>
-	
+
 </div>
 
 <!-- <div>
