@@ -8,10 +8,9 @@
   </head>
 
 <body>
-
-    <div class="header clearfix">
-      <a href="/" class="logo"></a>
-       <ul class="main_navigation">
+    <div class="header clearfix"> 
+      <a class="logo" href="/"></a>     
+      <ul class="main_navigation">
         <li>
           <a href="/">TOPICS</a>
           <ul class="sub_main_navigation">
@@ -19,8 +18,20 @@
               <li><a href="/topic/<%= topic['id']%>"><%= topic['title']%></a></li>
             <% end %>
           </ul>
-        </li>
-      </ul> 
+        </li>        
+        
+        <% if current_user %>
+          <li>
+            <a href="/signout">LOGOUT</a>
+          </li>
+        
+        <%else%>
+          <li>
+            <a href="/login">LOGIN</a>
+          </li>
+         <%end%>
+        
+     </ul> 
     </div>
 
 

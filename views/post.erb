@@ -1,13 +1,15 @@
 <div class="main-greeting">
 	<div><%= "#{@post.first["title"].upcase}" %></div>
-	<div>"<%= "#{@post.first["description"]}" %>" -<%= "#{@post.first["author"]}" %></div>
+	<div class="quote">"<%= "#{@post.first["description"]}" %>" -<%= "#{@post.first["author"]}" %></div>
 </div>
+
+<div class="show-form">ADD A COMMENT</div>
 
 <div class="form-container">
 
 	<% if current_user %>
 
-		<form class="contact" action="/comment" method="post">
+		<form class="form" action="/comment" method="post">
 			<input type="hidden" name="post_id" value=<%= "#{@post.first["id"]}" %>>
 			
 			<div class="input-row">
@@ -26,7 +28,7 @@
 		</form>
 	
 	<% else %>
-		<a href="/login">Login</a> <a href="/signup">Register</a> to post
+		<a href="/login">LOGIN</a> or <a href="/signup">REGISTER</a> to post
 	<% end %>
 
 </div>
@@ -39,16 +41,16 @@
 
 	<% if @comments.length > 0 %>
 		<% @comments.each do |comment| %>
+			<div class="one-comment clearFix">
+				<div class="user">
+					<%="#{comment["author"]}" %>
+				</div>
 
-			<div>
-				-<%="#{comment["author"]}" %>
-			</div>
+				<div class="comment-body">
+					<%= "#{comment["description"]}" %>
+				</div>
 
-			<div>
-				<%= "#{comment["description"]}" %>
-			</div>
-
-				<div class="vote">
+				<div class="vote like-comment">
 
 					<form action="/comment" method="post">
 
@@ -56,14 +58,20 @@
 						<input type="hidden" name="post_id" value=<%= "#{@post.first["id"]}" %>>
 						<input type="hidden" name="comment_id" value=<%= "#{comment["id"]}" %>>
 						
+						<% if current_user %>
+						
 						<div class="like">
 							<input type="submit" value="LIKE" />
 						</div>
+
+						<% end %>
+
 					</form>
 					<div>
 						LIKES: <%= "#{comment['vote']}"%>
 					</div>	
 				</div>
+			</div>
 
 
 		<% end %>

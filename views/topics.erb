@@ -1,14 +1,14 @@
 <div class="main-greeting"><%= @intro %></div>
 
-
+<div class="show-form">ADD A DESTINATION</div>
 <div class="form-container">
 
 	<% if current_user %>
 
-			<form class="contact" action="/topic" method="post">
+			<form class="form" action="/topic" method="post">
 				
 				<div class="input-row">
-					<label for="title">WHICH COUNTRY? </label>
+					<label for="title">WHERE? </label>
 					<input type="text" name="title" />
 				</div>
 				
@@ -16,11 +16,6 @@
 					<label for="image_url">IMAGE LINK: </label>
 					<input type="text" name="image_url" />
 				</div>
-
-<!-- 				<div class="input-row">
-					<label for="author">AUTHOR: </label>
-					<input type="text" name="author" />
-				</div> -->
 				
 				<div class="input-row">
 					<input type="submit" value="LET'S GO!" />
@@ -28,9 +23,9 @@
 
 			</form>
 	<% else %>
-		<a href="/login">Login</a> <a href="/signup">Register</a> to post
+		<a href="/login">LOGIN</a> or <a href="/signup">REGISTER</a> to post
 	<% end %>
-	
+
 </div>
 
 
@@ -39,7 +34,7 @@
 		<div class="topic-tile">
 			<a href="/topic/<%= "#{topic["id"]}" %>"><%= "#{topic["title"]}" %></a>
 			<a href="/topic/<%= "#{topic["id"]}" %>"><img src=<%= "#{topic["image_url"]}" %>></a>
-
+			
 			<div class="vote">
 
 				<div>
@@ -48,9 +43,14 @@
 						<input type="hidden" name="_method" value="put" />
 						<input type="hidden" name="topic_id" value=<%= "#{topic["id"]}" %>>
 						
+						<% if current_user %>
+						
 						<div class="like">
 							<input type="submit" value="LIKE" />
 						</div>
+						
+						<%end%>
+
 					</form>
 				</div>
 				<div>
