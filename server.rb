@@ -3,7 +3,16 @@ module Travel
 
     enable :sessions
 
-    @@db = PG.connect({dbname: "trav_forum"})
+    if ENV["RACK_ENV"] == 'production'
+      @@db = PG.connect(
+        dbname: ENV["POSTGRES_DB"],
+        host: ENV["POSTGRES_HOST"],
+        password: ENV["POSTGRES_PASS"],
+        user: ENV["POSTGRES_USER"]
+      )
+    else
+      @@db = PG.connect({dbname: "trav_forum"})
+    end
 
     def current_user
       if session["user_id"]
