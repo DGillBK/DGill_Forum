@@ -33,7 +33,12 @@
 	<% @topics.each do |topic| %>
 		<div class="topic-tile">
 			<a href="/topic/<%= "#{topic["id"]}" %>"><%= "#{topic["title"]}" %></a>
-			<a href="/topic/<%= "#{topic["id"]}" %>"><img src=<%= "#{topic["image_url"]}" %>></a>
+			
+			<a href="/topic/<%= "#{topic["id"]}" %>">
+				<div class="image-wrap">
+					<img src=<%= "#{topic["image_url"]}" %>>
+				</div>
+			</a>
 			
 			<div class="vote">
 

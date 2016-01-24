@@ -17,7 +17,7 @@ body {
   font-family: Catamaran;
   text-align: center;
   color: #ffffff;
-  background-color: #EDEDEB;
+  background-color: #dedfde;
 }
 
 /* copied from other file */
@@ -99,11 +99,12 @@ h2 {
 .topic-tile {
   display: inline-block;
   vertical-align: top;
-  max-width: 23%;
+  width: 25%;
   padding: 20px;
   overflow: hidden;
-  border: 1px solid red;
-  /*height: 250px;*/
+  background-color: #fff;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .topic-tile a {
@@ -111,18 +112,34 @@ h2 {
   font-weight: 500;
 }
 
-.topic-tile img {
+/*.topic-tile img {
 
-  /*max-height: 200px;*/
+  max-height: 200px;
   height: auto;
   width: 100%;
-}
-
+}*/
 
 .one-topic a {
   font-weight: 900;
   color: #728E9D;
   font-size: 45px;
+}
+
+.image-wrap {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrap img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 100%;
+  min-width: 100%;
 }
 
 .no-posts {
@@ -138,6 +155,7 @@ h2 {
 
 .form-container {
   background-color: #728E9D;
+  padding-top: 12px;
   display:none;
 }
 
@@ -250,7 +268,6 @@ h2 {
   left: 50%;
   transform: translateX(-50%);
   display: none;
-  border-bottom: 4px solid #fff;
 }
 
 .main_navigation li:hover ul.sub_main_navigation {
@@ -262,10 +279,11 @@ h2 {
   padding: 6px 20px;
   line-height: 23px;
   background-color: rgba(0,0,0,0.2);
+  border-bottom: 4px solid #fff;
 }
 
-.main_navigation li ul.sub_main_navigation:hover{
-    background: rgba(0, 0, 0, 0.2);
+.main_navigation li ul.sub_main_navigation a:hover{
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .sub_main_navigation li {

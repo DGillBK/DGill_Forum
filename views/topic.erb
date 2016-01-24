@@ -42,11 +42,15 @@
 			<% @posts.each do |post| %>
 				<div class="topic-tile">
 					<div>
-						<a href="/post/<%= "#{post["id"]}" %>"><%= "#{post["title"]}" %></a>
-						<a href="/post/<%= "#{post["id"]}" %>"><img src=<%= "#{post["image_url"]}" %>></a>
-					
-					</div>
-					
+						<a href="/post/<%= "#{post["id"]}" %>"><%= "#{post["title"]}" %></a>		
+
+						<a href="/post/<%= "#{post["id"]}" %>">
+							<div class="image-wrap">
+								<img src=<%= "#{post["image_url"]}" %>>
+							</div>
+						</a>
+	
+					</div>				
 
 					<div class="vote">
 
