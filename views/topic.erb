@@ -46,7 +46,9 @@
 
 						<a href="/post/<%= "#{post["id"]}" %>">
 							<div class="image-wrap">
-								<img src=<%= "#{post["image_url"]}" %>>
+								<% if post['image_url'] %>
+									<img src=<%= "#{post["image_url"]}" %>>
+								<% end %>
 							</div>
 						</a>
 	

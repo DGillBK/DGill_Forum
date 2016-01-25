@@ -36,7 +36,9 @@
 			
 			<a href="/topic/<%= "#{topic["id"]}" %>">
 				<div class="image-wrap">
-					<img src=<%= "#{topic["image_url"]}" %>>
+					<% if topic['image_url'] %>
+						<img src=<%= "#{topic["image_url"]}" %>>
+					<% end %>
 				</div>
 			</a>
 
