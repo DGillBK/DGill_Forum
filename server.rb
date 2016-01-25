@@ -42,8 +42,7 @@ module Travel
         VALUES ($1, $2, $3) RETURNING id;
       SQL
 
-      session["user-id"]=new_user.first["id"].to_i
-
+      session["user_id"] = new_user.first["id"].to_i
       redirect "/"
     end
 

@@ -1,7 +1,9 @@
 <div class="main-greeting">LOGIN & GTFO</div>
 
 
-<% if @error %><%= @error %><% end %>
+<% if @error %>
+	<div class="invalid"><%= @error %></div>
+<% end %>
 
 <div class="log-container">
 

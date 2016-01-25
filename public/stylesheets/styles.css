@@ -26,8 +26,7 @@ body {
 .header {
   padding: 10px 30px 10px 25px;
   border-bottom: 1px solid #fff;
-  background: #feff57;
-  height: 285px;
+  height: 340px;
   background: url("../images/travel_header.jpg");
   background-size: cover;
   background-position: 50% 50%;
@@ -157,6 +156,11 @@ h2 {
   background-color: #728E9D;
   padding-top: 12px;
   display:none;
+}
+
+.invalid {
+  background-color: #173444;
+  padding-top: 12px;
 }
 
 .show-form {
