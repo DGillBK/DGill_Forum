@@ -17,7 +17,7 @@ body {
   font-family: Catamaran;
   text-align: center;
   color: #ffffff;
-  background-color: #dedfde;
+  background-color: #EDEDEB;
 }
 
 /* copied from other file */
@@ -82,7 +82,7 @@ h2 {
 .main-greeting {
   font-size: 24px;
   padding: 10px 0;
-  background-color: #EDEDEB;
+  background-color: #fff;
   border-bottom: 1px solid #8F9A95;
   color: #454F51;
   font-weight: 900;  
@@ -99,7 +99,7 @@ h2 {
 .topic-tile {
   display: inline-block;
   vertical-align: top;
-  width: 25%;
+  width: 20%;
   padding: 20px;
   overflow: hidden;
   background-color: #fff;
@@ -160,14 +160,14 @@ h2 {
 }
 
 .show-form {
-  background-color: #173444;
+  background-color: #454F51;
   font-weight: 600;
   color: #EDEDEB;
   position: relative;
 }
 
 .show-form:hover { 
-  background-color: #454F51;
+  background-color: #173444;
 }
 
 .show-form:after {
@@ -180,13 +180,13 @@ h2 {
   position: absolute;
   pointer-events: none;
   border-color: rgba(73, 99, 115, 0);
-  border-top-color: #173444;
+  border-top-color: #454F51;
   border-width: 11px;
   margin-left: -11px;
 }
 
 .show-form:hover:after {
-  border-top-color: #454F51;
+  border-top-color: #173444;
 }
 
 
