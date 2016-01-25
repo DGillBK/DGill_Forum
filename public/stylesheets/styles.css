@@ -283,6 +283,7 @@ h2 {
 }
 
 .main_navigation li ul.sub_main_navigation a {
+  display: block;
   padding: 6px 20px;
   line-height: 23px;
   background-color: rgba(0,0,0,0.2);
